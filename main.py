@@ -1,1 +1,3 @@
-print("Hello Myaka!")
+print("Hello Myaka!")  # Congrats!
+
+print('Good job!')
