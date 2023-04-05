@@ -1,4 +1,5 @@
 import pygame
+import sys
 from player import Player
 from enemy import Enemy
 from pygame.locals import (K_ESCAPE, KEYDOWN, QUIT)
@@ -12,7 +13,7 @@ screen_size = (screen_width, screen_height)
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 ADDENEMY = pygame.USEREVENT + 1
-pygame.time.set_timer(ADDENEMY, 250)
+pygame.time.set_timer(ADDENEMY, 100)
 
 player = Player(screen_size)
 
@@ -48,11 +49,16 @@ while running:
         screen.blit(entity.surf, entity.rect)
 
     if pygame.sprite.spritecollideany(player, enemies):
-        player.kill()
-        running = False
+        for enemy in enemies:
+            if enemy.rect.colliderect(player.rect):
+                enemy.kill()
+                player.health -= 1
+                if player not in all_sprites:
+                    running = False
 
     pygame.display.flip()
 
     clock.tick(60)
 
 pygame.quit()
+sys.exit()

@@ -9,6 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.surf.fill((255, 255, 255))
         self.rect = self.surf.get_rect()
         self.scr_sz = screen_size
+        self.health = 5
 
     def update(self, pressed_keys):
         if pressed_keys[K_w]:
@@ -28,3 +29,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.top = 0
         if self.rect.bottom >= self.scr_sz[1]:
             self.rect.bottom = self.scr_sz[1]
+
+        if self.health <= 0:
+            self.kill()
+
