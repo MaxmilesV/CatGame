@@ -30,6 +30,3 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom >= self.scr_sz[1]:
             self.rect.bottom = self.scr_sz[1]
 
-        if self.health <= 0:
-            self.kill()
-

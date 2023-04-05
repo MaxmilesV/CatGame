@@ -37,8 +37,6 @@ while running:
             new_enemy = Enemy(screen_size)
             enemies.add(new_enemy)
             all_sprites.add(new_enemy)
-        elif player not in all_sprites:
-            running = False
 
     pressed_keys = pygame.key.get_pressed()
     player.update(pressed_keys)
@@ -55,6 +53,8 @@ while running:
             if enemy.rect.colliderect(player.rect):
                 enemy.kill()
                 player.health -= 1
+                if player.health <= 1:
+                    running = False
 
     pygame.display.flip()
 
