@@ -53,7 +53,7 @@ while running:
             if enemy.rect.colliderect(player.rect):
                 enemy.kill()
                 player.health -= 1
-                if player.health <= 1:
+                if player.health <= 0:
                     running = False
 
     pygame.display.flip()
