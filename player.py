@@ -7,7 +7,8 @@ class Player(pygame.sprite.Sprite):
         super(Player, self).__init__()
         self.surf = pygame.Surface((75, 25))
         self.surf.fill((255, 255, 255))
-        self.rect = self.surf.get_rect()
+        self.rect = self.surf.get_rect(center=(screen_size[0] * 0.1,
+                                               screen_size[1] / 2))
         self.scr_sz = screen_size
         self.health = 5
 
@@ -30,3 +31,10 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom >= self.scr_sz[1]:
             self.rect.bottom = self.scr_sz[1]
 
+    def hit(self):
+        if self.health > 1:
+            self.health -= 1
+            return False
+        else:
+            self.kill()
+            return True
