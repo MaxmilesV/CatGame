@@ -1,2 +1,2 @@
-# CatGame
+# CatGame (PyGame)
 placeholder
